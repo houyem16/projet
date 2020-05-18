@@ -27,10 +27,15 @@ class utilisateurController extends Controller
         $email = $credentials['email'];
         $password = $credentials['pwd'];
 
+        $loginok = false;
+
+        if ($email == "a@a.com" and $password == "aaaa") {
+            $loginok = true;
+        }
 
         $arr = array(
-            "status" => false,
-            "msg" => $credentials['email']
+            "status" => $loginok,
+            "msg" => "vous netes pas un client"
         );
         return $arr;
     }
