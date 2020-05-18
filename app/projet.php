@@ -7,7 +7,7 @@ namespace App;
 //use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Model;
 //use Laravel\Lumen\Auth\Authorizable;
-
+// Cdtp@2020 mysql
 class projet extends Model 
 {
     protected $table = "projet";

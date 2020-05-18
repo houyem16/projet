@@ -21,5 +21,19 @@ class utilisateurController extends Controller
 
     }
 
+    public function login(Request $request) {
+
+        $credentials = $request->input('credentials');
+        $email = $credentials['email'];
+        $password = $credentials['pwd'];
+
+
+        $arr = array(
+            "status" => false,
+            "msg" => $credentials['email']
+        );
+        return $arr;
+    }
+
     //
 }
