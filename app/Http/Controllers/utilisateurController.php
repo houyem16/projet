@@ -38,7 +38,7 @@ class utilisateurController extends Controller
 
         $arr = array(
             "status" => $loginok,
-            "msg" => $count
+            "msg" =>"vous netes pas client"
         );
         return $arr;
     }
