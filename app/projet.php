@@ -15,7 +15,7 @@ class projet extends Model
     
     protected $fillable = [
         'id_projet', 'titre_projet','description','budget_prevu	','somme_collectee','resume','date_fin_prevu','somme_min',
-        'id_categorie','id_adresse','porteur_projet','porté'
+        'id_categorie','id_adresse','porteur_projet','porté','	image_url'
     ];
 
     

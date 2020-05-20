@@ -28,14 +28,17 @@ class utilisateurController extends Controller
         $password = $credentials['pwd'];
 
         $loginok = false;
+        $count = utilisateur::where('email', $email)
+        ->where('password', $password)
+        ->count();
 
-        if ($email == "a@a.com" and $password == "aaaa") {
+        if ($count == 1) {
             $loginok = true;
         }
 
         $arr = array(
             "status" => $loginok,
-            "msg" => "vous netes pas un client"
+            "msg" => $count
         );
         return $arr;
     }
