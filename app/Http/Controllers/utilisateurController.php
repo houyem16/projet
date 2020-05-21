@@ -44,19 +44,25 @@ class utilisateurController extends Controller
     }
 
     public function register(Request $request){
-        $utilisateur = $request->input('utilisateur');
+        $utilisateur_q = $request->input('utilisateur');
         //$email = $utilisateur['email'];
         //$password = $utilisateur['pwd'];
         //$nom = $utilisateur['nom'];
         //$prenom = $utilisateur['prenom'];
 
-        $utilisateur = new App\utilisateur;
-        $utilisateur->email = utilisateur['email'] ;
-        $utilisateur->password = utilisateur['pwd'];
-        $utilisateur->nom = utilisateur['nom'];
-        $utilisateur->prenom = utilisateur['prenom'];
+        $utilisateur = new utilisateur;
+        $utilisateur->email = $utilisateur_q['email'] ;
+        $utilisateur->password = $utilisateur_q['password'];
+        $utilisateur->nom = $utilisateur_q['nom'];
+        $utilisateur->prenom = $utilisateur_q['prenom'];
 
-        $utilisateur->save();
+        $saved = $utilisateur->save();
+
+        $arr = array(
+            "status" => $saved,
+            "msg" =>""
+        );
+        return $arr;
 
 
     }
