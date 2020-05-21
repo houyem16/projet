@@ -20,7 +20,9 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix'=>'api'],function ($router){
     $router->get('utilisateur','utilisateurController@showAllutilisateur');
     $router->post('user/login','utilisateurController@login');
+    $router->post('user/register','utilisateurController@register');
     $router->get('projet','projetController@showAllprojet');
+    $router->post('projet','projetController@ajouterp');
 
 
 });
