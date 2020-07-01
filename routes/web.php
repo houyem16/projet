@@ -22,7 +22,15 @@ $router->group(['prefix'=>'api'],function ($router){
     $router->post('user/login','utilisateurController@login');
     $router->post('user/register','utilisateurController@register');
     $router->get('projet','projetController@showAllprojet');
-    $router->post('projet','projetController@ajouterp');
+    $router->get('projet/{id}','projetController@showprojet');
+    $router->post('ajouterprojet','projetController@ajouterp');
+    $router->post('uploadimage','projetController@uploadimage');
+    $router->post('user/detailuser','utilisateurController@detailuser');
+    $router->post('user/userprojets','utilisateurController@userprojets');
+    $router->post('paiement','utilisateurController@paiement');
+
+
+
 
 
 });

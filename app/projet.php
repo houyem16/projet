@@ -11,12 +11,19 @@ use Illuminate\Database\Eloquent\Model;
 class projet extends Model 
 {
     protected $table = "projet";
+    public $timestamps = false;
+    protected $primaryKey = 'id_projet';
 
     
     protected $fillable = [
         'id_projet', 'titre_projet','description','budget_prevu	','somme_collectee','resume','date_fin_prevu','somme_min',
-        'id_categorie','id_adresse','porteur_projet','porté','	image_url'
+        'id_categorie','id_adresse','porteur_projet','portee','	image_url'
     ];
+
+    public function utilisateur()
+    {
+        return $this->belongsTo('App\utilisateur', 'porteur_projet', 'id_utilisateur');
+    }
 
     
 }
