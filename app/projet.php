@@ -16,13 +16,17 @@ class projet extends Model
 
     
     protected $fillable = [
-        'id_projet', 'titre_projet','description','budget_prevu	','somme_collectee','resume','date_fin_prevu','somme_min',
+        'id_projet', 'titre_projet','description','budget_prevu','somme_collectee','resume','date_fin_prevu','somme_min',
         'id_categorie','id_adresse','porteur_projet','portee','	image_url'
     ];
 
     public function utilisateur()
     {
         return $this->belongsTo('App\utilisateur', 'porteur_projet', 'id_utilisateur');
+    }
+
+    public function portfeuille(){
+        return $this->hasOne('App\portfeuilleprojet','id_projet');
     }
 
     

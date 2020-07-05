@@ -28,6 +28,7 @@ $router->group(['prefix'=>'api'],function ($router){
     $router->post('user/detailuser','utilisateurController@detailuser');
     $router->post('user/userprojets','utilisateurController@userprojets');
     $router->post('paiement','utilisateurController@paiement');
+    $router->post('alimenter','utilisateurController@alimenter');
 
 
 

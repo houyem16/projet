@@ -11,7 +11,7 @@ use Laravel\Lumen\Auth\Authorizable;
 class portfeuilleprojet extends Model 
 {
 
-    protected $table = "portfeuilleprojet";
+    protected $table = "portefeuilleprojet";
     public $timestamps = false;
     protected $primaryKey = 'id_portefeuilleprojet';
     /**
@@ -20,7 +20,7 @@ class portfeuilleprojet extends Model
      * @var array
      */
     protected $fillable = [
-        'id_portefeuilleprojet', 'solde',
+        'id_portefeuilleprojet', 'solde', 'id_projet'
     ];
 
     public function portfeuille(){

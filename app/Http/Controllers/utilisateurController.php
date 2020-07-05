@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use Laravel\Lumen\Routing\Controller; 
 use App\utilisateur;
+use App\projet;
+use App\virer;
+use App\alimenter;
 use Illuminate\Http\Request;
 
 class utilisateurController extends Controller
@@ -94,8 +97,47 @@ class utilisateurController extends Controller
         $id_projet = $request->input('id_projet');
 
         $utilisateur_portfeuille = utilisateur::find($id_utilisateur)->portfeuille;
+        $projet_portfeuille = projet::find($id_projet)->portfeuille;
 
-        return response()->json($utilisateur_portfeuille);
+        //var_dump($utilisateur_portfeuille); exit();
+
+        $new_virer = new virer;
+        $new_virer->id_portefeuilleclient = $utilisateur_portfeuille->id_portefeuilleclient;
+        $new_virer->id_portefeuilleprojet = $projet_portfeuille->id_portefeuilleprojet;
+        $new_virer->montant = $montant;
+        $new_virer->dateVirement = date("Y-m-d H:i:s");
+
+        $saved = $new_virer->save();
+
+        $arr = array(
+            "status" => $saved,
+            "msg" =>""
+        );
+        return $arr;
+
+    }
+
+
+    public function alimenter(Request $request){
+        $montant = $request->input('montant');
+        $id_utilisateur = $request->input('id_utilisateur');
+
+        $utilisateur_portfeuille = utilisateur::find($id_utilisateur)->portfeuille;
+
+        //var_dump($utilisateur_portfeuille); exit();
+
+        $new_alimenter = new alimenter;
+        $new_alimenter->id_portefeuilleclient = $utilisateur_portfeuille->id_portefeuilleclient;
+        $new_alimenter->montant = $montant;
+        $new_alimenter->date = date("Y-m-d H:i:s");
+
+        $saved = $new_alimenter->save();
+
+        $arr = array(
+            "status" => $saved,
+            "msg" =>""
+        );
+        return $arr;
 
     }
 

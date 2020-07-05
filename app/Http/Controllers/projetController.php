@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Laravel\Lumen\Routing\Controller; 
 use App\projet;
 use Illuminate\Http\Request;
+use App\virer;
+use App\portfeuilleprojet;
 
 class projetController extends Controller
 {
@@ -34,7 +36,13 @@ class projetController extends Controller
         $projet->description = $projet_q['description'];
         $projet->date_fin_prevu = $projet_q['date_fin_prevu'];
         $projet->image_url = $projet_q['image_url'];
+        $projet->porteur_projet = $projet_q['porteur_projet']['id_utilisateur'];
         $saved = $projet->save();
+
+        $pfeuille=new portfeuilleprojet;
+        $pfeuille->solde = 0;
+        $pfeuille->id_projet = $projet->id_projet;
+        $savedp = $pfeuille->save();
 
         $arr = array(
             "status" => $saved,
@@ -49,6 +57,8 @@ class projetController extends Controller
         $projet = projet::find($id);
         $owner = $projet->utilisateur;
         $projet->owner = $owner;
+        $projet_portfeuille = projet::find($id)->portfeuille;
+        $projet->somme_collectee = virer::where('id_portefeuilleprojet', $projet_portfeuille->id_portefeuilleprojet)->sum('montant');
         return response()->json($projet);
     }
 
